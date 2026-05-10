@@ -229,17 +229,13 @@ console.log(req.body);
   tran_id: tran_id,
 
   success_url:
-    `https://zesty-blancmange-111055.netlify.app/payment/success/${tran_id}`,
+`https://bazarhub.onrender.com/payment/success/${tran_id}`,
 
-  fail_url:
-    `https://zesty-blancmange-111055.netlify.app/payment/fail/${tran_id}`,
+ fail_url:`https://bazarhub.onrender.com/payment/fail/${tran_id}`,
 
-  cancel_url:
-    `https://zesty-blancmange-111055.netlify.app/payment/cancel/${tran_id}`,
-
-  ipn_url:
-    "https://zesty-blancmange-111055.netlify.app/ipn",
-
+ cancel_url:`https://bazarhub.onrender.com/payment/cancel/${tran_id}`,
+ ipn_url:"https://bazarhub.onrender.com/ipn",
+ 
   shipping_method: "Courier",
 
   product_name: "Ecommerce Product",
