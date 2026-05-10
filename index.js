@@ -26,7 +26,7 @@ const client = new MongoClient(uri, {
   },
 });
 app.use(cors({
-  origin: "http://localhost:5173",
+  origin: "https://zesty-blancmange-111055.netlify.app",
   credentials: true
 }));
 async function run() {
@@ -229,16 +229,16 @@ console.log(req.body);
   tran_id: tran_id,
 
   success_url:
-    `zesty-blancmange-111055.netlify.app/payment/success/${tran_id}`,
+    `https://zesty-blancmange-111055.netlify.app/payment/success/${tran_id}`,
 
   fail_url:
-    `zesty-blancmange-111055.netlify.app/payment/fail/${tran_id}`,
+    `https://zesty-blancmange-111055.netlify.app/payment/fail/${tran_id}`,
 
   cancel_url:
-    `zesty-blancmange-111055.netlify.app/payment/cancel/${tran_id}`,
+    `https://zesty-blancmange-111055.netlify.app/payment/cancel/${tran_id}`,
 
   ipn_url:
-    "zesty-blancmange-111055.netlify.app/ipn",
+    "https://zesty-blancmange-111055.netlify.app/ipn",
 
   shipping_method: "Courier",
 
@@ -337,7 +337,7 @@ app.post(
     );
 
     res.redirect(
-      "http://localhost:5173/payment-success"
+      "https://zesty-blancmange-111055.netlify.app/payment-success"
     );
 
 });
@@ -357,7 +357,7 @@ app.post(
     });
 
     res.redirect(
-      "http://localhost:5173/payment-fail"
+      "https://zesty-blancmange-111055.netlify.app/payment-fail"
     );
 
 });
@@ -377,7 +377,7 @@ app.post(
     });
 
     res.redirect(
-      "http://localhost:5173/payment-cancel"
+      "https://zesty-blancmange-111055.netlify.app/payment-cancel"
     );
 
 });
