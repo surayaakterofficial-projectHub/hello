@@ -25,8 +25,12 @@ const client = new MongoClient(uri, {
     deprecationErrors: true,
   },
 });
+
 app.use(cors({
-  origin: "https://zesty-blancmange-111055.netlify.app",
+  origin: [
+    "http://localhost:5173",
+    "https://zesty-blancmange-111055.netlify.app"
+  ],
   credentials: true
 }));
 async function run() {
@@ -235,7 +239,7 @@ console.log(req.body);
 
  cancel_url:`https://bazarhub.onrender.com/payment/cancel/${tran_id}`,
  ipn_url:"https://bazarhub.onrender.com/ipn",
- 
+
   shipping_method: "Courier",
 
   product_name: "Ecommerce Product",
