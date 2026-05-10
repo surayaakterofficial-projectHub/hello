@@ -229,16 +229,16 @@ console.log(req.body);
   tran_id: tran_id,
 
   success_url:
-    `http://localhost:5000/payment/success/${tran_id}`,
+    `zesty-blancmange-111055.netlify.app/payment/success/${tran_id}`,
 
   fail_url:
-    `http://localhost:5000/payment/fail/${tran_id}`,
+    `zesty-blancmange-111055.netlify.app/payment/fail/${tran_id}`,
 
   cancel_url:
-    `http://localhost:5000/payment/cancel/${tran_id}`,
+    `zesty-blancmange-111055.netlify.app/payment/cancel/${tran_id}`,
 
   ipn_url:
-    "http://localhost:5000/ipn",
+    "zesty-blancmange-111055.netlify.app/ipn",
 
   shipping_method: "Courier",
 
