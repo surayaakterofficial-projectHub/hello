@@ -28,6 +28,7 @@ const client = new MongoClient(uri, {
 
 app.use(cors({
   origin: [
+     "http://localhost:5174",
     "http://localhost:5173",
     "https://zesty-blancmange-111055.netlify.app"
   ],
@@ -55,8 +56,13 @@ async function run() {
     const cartCollection =
       database.collection("cart");
 
+const ordersCollection =
+  database.collection("orders");
+  
       const paymentCollection =
   database.collection("payments");
+
+
 
 app.get("/products/:id", async (req, res) => {
 
@@ -212,7 +218,18 @@ app.patch("/products/:id", async (req, res) => {
         res.send(result);
 
     });
+app.post("/orders", async (req, res) => {
 
+  const orderData = req.body;
+
+  const result =
+    await ordersCollection.insertOne(
+      orderData
+    );
+
+  res.send(result);
+
+});
 // =========================
 // SSL PAYMENT API
 // =========================
