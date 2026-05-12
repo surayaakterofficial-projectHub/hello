@@ -58,7 +58,7 @@ async function run() {
 
 const ordersCollection =
   database.collection("orders");
-  
+
       const paymentCollection =
   database.collection("payments");
 
@@ -121,6 +121,66 @@ app.patch("/products/:id", async (req, res) => {
 
 });
 
+
+
+
+app.patch("/orders/:id", async (req, res) => {
+
+  const id = req.params.id;
+
+  const result =
+    await ordersCollection.updateOne(
+
+      {
+        _id: new ObjectId(id)
+      },
+
+      {
+        $set: {
+          status: "confirmed"
+        }
+      }
+
+    );
+
+  res.send(result);
+
+});
+
+app.get("/dashboard-stats", async (req, res) => {
+
+  const orders =
+    await ordersCollection.find().toArray();
+
+  const confirmedOrders =
+    orders.filter(
+      o => o.status === "confirmed"
+    );
+
+  const pendingOrders =
+    orders.filter(
+      o => o.status === "pending"
+    );
+
+  const totalRevenue =
+    confirmedOrders.reduce(
+      (sum, order) => sum + order.total,
+      0
+    );
+
+  res.send({
+
+    totalOrders:
+      confirmedOrders.length,
+
+    pendingOrders:
+      pendingOrders.length,
+
+    totalRevenue,
+
+  });
+
+});
 
     // =========================
     // Add Product API
@@ -226,6 +286,20 @@ app.post("/orders", async (req, res) => {
     await ordersCollection.insertOne(
       orderData
     );
+
+  res.send(result);
+
+});
+
+
+
+app.get("/orders", async (req, res) => {
+
+  const result =
+    await ordersCollection
+      .find()
+      .sort({ _id: -1 })
+      .toArray();
 
   res.send(result);
 
